@@ -12,11 +12,12 @@ const components = preval
 const AtomList = () => {
 
     const [newFileName, setNewFileName] = useState('');
+    
 
     const fileUnderComponent = preval
         `   const fs = require('fs')
             const path = require("path");
-            const file = fs.readFileSync(path.resolve(__dirname, \`../atoms/${newFileName}/${newFileName}.js\`));
+            const file = fs.readFileSync(path.resolve(__dirname, \`../atoms/avatar/avatar.js\`));
             module.exports = file.toString();
         `;
     
