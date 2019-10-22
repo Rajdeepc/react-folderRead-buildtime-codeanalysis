@@ -1,9 +1,9 @@
-import React ,{useState} from 'react'
+import React, { useState } from 'react'
 import preval from 'preval.macro';
 import '../index.css'
 
 const components = preval
-` const fs = require('fs');
+    ` const fs = require('fs');
   const files = fs.readdirSync('src/atoms');
   module.exports = files;
 `
