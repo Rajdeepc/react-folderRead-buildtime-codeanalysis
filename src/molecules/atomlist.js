@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import preval from 'preval.macro';
 import '../index.css'
 
+
 const components = preval
     ` const fs = require('fs');
   const files = fs.readdirSync('src/atoms');
@@ -10,23 +11,23 @@ const components = preval
 
 const AtomList = () => {
 
-    const [newFileName, setNewFileName] = useState('avatar');
-
+    const [newFileName, setNewFileName] = useState('');
 
     const fileUnderComponent = preval
         `   const fs = require('fs')
-            const path = require('path');
-            const file = fs.readFileSync('src/atoms/${newFileName}/${newFileName}.js');
+            const path = require("path");
+            const file = fs.readFileSync(path.resolve(__dirname, \`../atoms/${newFileName}/${newFileName}.js\`));
             module.exports = file.toString();
         `;
+    
 
-    const setNewComponent = (componentName) => {
+    const changeComponent = (componentName) => {
         setNewFileName(componentName)
     }
 
     const eachAtom = (component) => {
         return (
-            <ul><li className="list-item-group" onClick={() => setNewComponent(component)}>{component}</li></ul>
+            <ul><li className="list-item-group" onClick={() => changeComponent(component)}>{component}</li></ul>
         )
     }
 
