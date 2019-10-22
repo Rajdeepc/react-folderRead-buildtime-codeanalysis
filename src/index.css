@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.width20{
+  width:20%
+}
+.width80{
+  width:80%
+}
+.atomList{
+  background: lightblue;
+  height: 100vh;
+}
+.inlineBlock{
+  display: inline-block;
+  vertical-align: top;
+}
+.list-group ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.list-group ul li{
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  border-bottom: 1px solid grey;
+}
