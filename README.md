@@ -1,4 +1,4 @@
-## A simple App which will render the list of components added under a specific folder in your react app and display its contents on click of each item
+## Read Folders and Files of a project with react front end
 
 A simple React App to demonstrate how to read your folders and their files from a front end library like React with using a backend Node layer.
 Here we have used preval.macro which creates a wrapper and server layer to create your own node module and read folders and files through it.
