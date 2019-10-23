@@ -69,7 +69,7 @@ npm start
 
 1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fixed header logo`) to stage and commit your changes
 1. `git push my-fork-name the-name-of-my-branch`
-1. Go to the [CodingAssetsCollection](https://github.com/Rajdeepc/read-file-from-react-withour-node.git) and you should see recently pushed branches.
+1. Go to the [ReadFilesFromReact](https://github.com/Rajdeepc/read-file-from-react-withour-node.git) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
 
