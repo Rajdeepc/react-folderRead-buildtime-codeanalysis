@@ -1,52 +1,57 @@
-import React, { useState } from 'react'
-import preval from 'preval.macro';
-import '../index.css'
+import React, { useState } from "react";
+import preval from "preval.macro";
+import shortid from "shortid";
 
+const components = preval`
+const fs = require("fs");
+const files = fs.readdirSync("src/atoms");
+module.exports = files`;
 
-const components = preval
-    ` const fs = require('fs');
-  const files = fs.readdirSync('src/atoms');
-  module.exports = files;
-`
+const contentOfComponents = preval`
+const fs = require("fs");
+const files = fs.readdirSync("src/atoms");
+const content = files.map(filename => {
+  const fs = require("fs");
+  const url = 'src/atoms/'+filename+'/'+filename+'.js';
+  return fs.readFileSync(url).toString();
+})
+module.exports = content`;
 
 const AtomList = () => {
+  const [fileUnderComponent, setFileUnderComponent] = useState(null);
 
-    const [newFileName, setNewFileName] = useState('');
-    
+  const setNewComponent = componentName => {
+    const _index = components.indexOf(componentName);
+    setFileUnderComponent(contentOfComponents[_index]);
+  };
 
-    const fileUnderComponent = preval
-        `   const fs = require('fs')
-            const path = require("path");
-            const file = fs.readFileSync(path.resolve(__dirname, \`../atoms/${newFileName}/${newFileName}.js\`));
-            module.exports = file.toString();
-        `;
-    
-
-    const changeComponent = (componentName) => {
-        setNewFileName(componentName)
-    }
-
-    const eachAtom = (component) => {
-        return (
-            <ul><li className="list-item-group" onClick={() => changeComponent(component)}>{component}</li></ul>
-        )
-    }
-
+  const eachAtom = component => {
     return (
-        <div>
-            <div className="list-group inlineBlock atomList width20">
-                <div>List of Reusable Components</div>
-                {components.map((component, i) => {
-                    return eachAtom(component)
-                })}
-            </div>
-            <div className="list-group inlineBlock atomDescription width80">
-                {typeof fileUnderComponent === 'string' ? fileUnderComponent : null}
-            </div>
+      <li
+        key={shortid.generate()}
+        className="list-item-group"
+        onClick={() => setNewComponent(component)}
+      >
+        {component}
+      </li>
+    );
+  };
 
-        </div>
-    )
-}
+  return (
+    <div>
+      <div className="list-group inlineBlock atomList width20">
+        <div>List of Reusable Components</div>
+        <ul>
+          {components.map(component => {
+            return eachAtom(component);
+          })}
+        </ul>
+      </div>
+      <div className="list-group inlineBlock atomDescription width80">
+        {typeof fileUnderComponent === "string" ? fileUnderComponent : null}
+      </div>
+    </div>
+  );
+};
 
-export default AtomList
-
+export default AtomList;
