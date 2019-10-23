@@ -36,3 +36,12 @@ code {
   font-size: 18px;
   border-bottom: 1px solid grey;
 }
+.innerDiv{
+  border: 1px solid #e4e6e8;
+  padding: 10px;
+}
+.atomDescription{
+  height: 100vh;
+  background: #e4e6e8;
+  text-align: left;
+}

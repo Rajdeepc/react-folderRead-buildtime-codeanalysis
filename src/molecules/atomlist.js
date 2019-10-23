@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import preval from "preval.macro";
 import shortid from "shortid";
+import '../index.css'
 
 const components = preval`
 const fs = require("fs");
@@ -25,11 +26,11 @@ const AtomList = () => {
     setFileUnderComponent(contentOfComponents[_index]);
   };
 
-  const eachAtom = component => {
+  const eachAtom = (component,indexOfItem) => {
     return (
       <li
         key={shortid.generate()}
-        className="list-item-group"
+        className={"list-item-group" + (component === components[indexOfItem]) ? 'active': ''}
         onClick={() => setNewComponent(component)}
       >
         {component}
@@ -42,13 +43,18 @@ const AtomList = () => {
       <div className="list-group inlineBlock atomList width20">
         <div>List of Reusable Components</div>
         <ul>
-          {components.map(component => {
-            return eachAtom(component);
+          {components.map((component,i) => {
+            return eachAtom(component,i);
           })}
         </ul>
       </div>
       <div className="list-group inlineBlock atomDescription width80">
-        {typeof fileUnderComponent === "string" ? fileUnderComponent : null}
+          <div className="innerDiv">
+          <pre>{
+            fileUnderComponent
+          }</pre>
+          </div>
+       
       </div>
     </div>
   );
