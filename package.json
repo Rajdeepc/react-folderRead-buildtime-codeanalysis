@@ -6,7 +6,7 @@
     "preval.macro": "^3.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "^3.0.0-next.68",
+    "react-scripts": "^5.0.1",
     "shortid": "^2.2.15"
   },
   "scripts": {
